@@ -5,7 +5,9 @@
 <div>
 	<ul>
 		{% for room in rooms %}
-		<li>{{room.id}} -- {{room.name}}</li>
+		<a href="/room/{{room.id}}">
+			<li>{{room.id}} -- {{room.name}}</li>
+		</a>
 		{% endfor %}
 	</ul>
 </div>
