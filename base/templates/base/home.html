@@ -5,9 +5,13 @@
 <div>
 	<ul>
 		{% for room in rooms %}
+		<span>@{{room.host}}</span>
 		<a href="{% url 'room' room.id %}">
 			<li>{{room.id}} -- {{room.name}}</li>
 		</a>
+		<small>{{room.topic.name}}</small>
+		<br />
+		<br />
 		{% endfor %}
 	</ul>
 </div>
