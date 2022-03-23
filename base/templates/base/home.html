@@ -6,6 +6,7 @@
 	<a href="{% url 'create-room' %}"><h3>Create room</h3></a>
 	<ul>
 		{% for room in rooms %}
+		<a href="{% url 'update-room' room.id %}">Update</a>
 		<span>@{{room.host}}</span>
 		<a href="{% url 'room' room.id %}">
 			<li>{{room.id}} -- {{room.name}}</li>
