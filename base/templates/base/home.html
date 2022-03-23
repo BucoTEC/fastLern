@@ -31,8 +31,10 @@
 				<li>{{room.id}} -- {{room.name}}</li>
 			</a>
 			<small>{{room.topic.name}}</small>
+			{% if request.user == room.host %}
 			<a href="{% url 'update-room' room.id %}">Update</a>
 			<a href="{% url 'delete-room' room.id %}">Delete</a>
+			{% endif %}
 			<hr />
 			<br />
 			<br />
