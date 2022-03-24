@@ -1,3 +1,4 @@
+from multiprocessing import context
 from django.shortcuts import redirect, render
 from django.http import HttpResponse
 from django.contrib import messages
@@ -14,6 +15,9 @@ from .forms import RoomForm
 
 
 def loginPage(request):
+    page  = 'login'
+    if request.user.is_authenticated:
+        return redirect('home')
 
     if request.method == 'POST':
         username  = request.POST.get('username')
@@ -32,12 +36,20 @@ def loginPage(request):
         else: 
             messages.error(request, 'Username or password does not exist')
 
-    context = {}
+    context = {'page':page}
     return render(request, 'base/login_register.html',context)
 
 def logoutUser(request):
     logout(request)
     return redirect('home')
+
+def registerPage(request):
+    page = 'register'
+    context={
+        'page':page
+    }
+    return render(request,'base/login_register', context)
+
 
 def home(request):
     q = request.GET.get('q') if request.GET.get('q') != None else ''
